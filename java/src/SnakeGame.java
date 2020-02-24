@@ -10,8 +10,9 @@ public class SnakeGame {
 
     public SnakeGame(boolean[][] arr, int x, int y) {
         for(int i = 0; i < arr.length; i++) {
-            for(int j = 0; j < arr[i].length; j++)
-                this.game[i][j] = arr[i][j];
+            for(int j = 0; j < arr[i].length; j++) {
+                game[i][j] = arr[i][j];
+            }
         }
         this.headPosition = new int[2];
         this.headPosition[0] = x;
@@ -20,12 +21,14 @@ public class SnakeGame {
 
     public int[] findTailExhaustive() {
         resetCounters();
+        boolean tailFound = false;
         int[] result = new int[3];
         int snakeLen = 0;//increment every time it is true
         for(int i = 0; i < this.game.length; i++) {
             for(int j = 0; j < this.game[i].length; j++) {
                 int n = neighbors(i,j);
-                this.exhaustiveChecks++;
+                if(!tailFound)
+                    this.exhaustiveChecks++;
                 if(!game[i][j]) continue;//next iteration
                 else {
                     snakeLen++;
@@ -33,6 +36,7 @@ public class SnakeGame {
                     else if(n == 1 && i != headPosition[0] && j != headPosition[1]) {
                         result[0] = i;
                         result[1] = j;
+                        tailFound = true;
                     }
                 }
             }
