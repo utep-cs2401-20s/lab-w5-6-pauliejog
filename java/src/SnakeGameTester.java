@@ -11,6 +11,7 @@ public class SnakeGameTester {
                         {true,false,true},
                         {false,false,true}};
         int[] exp = {1,0,6};
+        
         SnakeGame sg = new SnakeGame(a,2,2);
         assertArrayEquals(exp,sg.findTailExhaustive());
     }
