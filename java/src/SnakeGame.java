@@ -27,14 +27,13 @@ public class SnakeGame {
         int snakeLen = 0;//increment every time it is true
         for(int i = 0; i < this.game.length; i++) {
             for(int j = 0; j < this.game[i].length; j++) {
-                int n = neighbors(i,j);
+                boolean checkCell = game[i][j];
                 if(!tailFound)
                     this.exhaustiveChecks++;
-                if(!game[i][j]) continue;//next iteration
-                else {
+                if(checkCell) {
                     snakeLen++;
-                    if(n != 1) continue;
-                    else if(n == 1 && i != headPosition[0] && j != headPosition[1]) {
+                    int n = neighbors(i,j);
+                    if(n == 1 && !(i == this.headPosition[0] && j == this.headPosition[1])) {
                         result[0] = i;
                         result[1] = j;
                         tailFound = true;
@@ -47,9 +46,12 @@ public class SnakeGame {
     }//end findTailEx
 
     public int[] findTailRecursive() {
-        return new int[]{1};
+        resetCounters();
+        return findTailRecursive(headPosition,headPosition);
     }//end findTailRec
+
     public int[] findTailRecursive(int[] currentPosition, int[] previousPosition) {
+        int[] result = new int[3];//x,y,snakeLen
         return new int[]{1};
     }//end findTailRec
 
@@ -88,4 +90,16 @@ public class SnakeGame {
         }
         return count;
     }//end neighbors
+
+    public void printBoard() {
+        for(int r = 0; r < game.length; r++) {
+            for(int c = 0; c < game[r].length; c++) {
+                if(game[r][c])
+                    System.out.print("x" + " ");
+                else
+                    System.out.print("-" + " ");
+            }
+            System.out.println();
+        }
+    }//end printBoard
 }//end class
