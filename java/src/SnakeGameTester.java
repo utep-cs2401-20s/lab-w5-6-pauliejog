@@ -1,3 +1,9 @@
+/*
+ * Paulie Jo Gonzalez
+ * lab w5-6
+ * MW 1:30 pm
+ */
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -21,7 +27,7 @@ public class SnakeGameTester {
         SnakeGame sg = new SnakeGame(a,2,2);
         sg.printBoard();
         assertArrayEquals(exp,sg.findTailExhaustive());
-        System.out.println(sg.getExhaustiveChecks());
+        assertEquals(4,sg.getExhaustiveChecks());//checks exhaustiveChecks
     }
 
     /*
@@ -42,7 +48,7 @@ public class SnakeGameTester {
         SnakeGame sg = new SnakeGame(a,0,1);
         sg.printBoard();
         assertArrayEquals(exp,sg.findTailExhaustive());
-        System.out.println(sg.getExhaustiveChecks());//checks that exhaustiveChecks works
+        assertEquals(18,sg.getExhaustiveChecks());//checks exhaustiveChecks
     }
 
     /*
@@ -59,7 +65,7 @@ public class SnakeGameTester {
         SnakeGame sg = new SnakeGame(a,0,1);
         sg.printBoard();
         assertArrayEquals(exp,sg.findTailExhaustive());
-        System.out.println(sg.getExhaustiveChecks());
+        assertEquals(9,sg.getExhaustiveChecks());//checks exhaustiveChecks
     }
 
     /*
@@ -79,7 +85,7 @@ public class SnakeGameTester {
         SnakeGame sg = new SnakeGame(a,0,0);
         sg.printBoard();
         assertArrayEquals(exp,sg.findTailExhaustive());
-        System.out.println(sg.getExhaustiveChecks());
+        assertEquals(3,sg.getExhaustiveChecks());//checks exhaustiveChecks
     }
 
     /*
@@ -99,7 +105,7 @@ public class SnakeGameTester {
         SnakeGame sg = new SnakeGame(a,0,3);
         sg.printBoard();
         assertArrayEquals(exp,sg.findTailExhaustive());
-        System.out.println(sg.getExhaustiveChecks());
+        assertEquals(11,sg.getExhaustiveChecks());//checks exhaustiveChecks
     }
     /*********************************************findTailRecursive****************************************************/
     /*
@@ -118,8 +124,7 @@ public class SnakeGameTester {
         SnakeGame sg = new SnakeGame(a,0,3);
         sg.printBoard();
         assertArrayEquals(exp,sg.findTailRecursive());
-        sg.findTailRecursive();
-        //System.out.println(sg.getRecursiveChecks());
+        assertEquals(exp[2],sg.getRecursiveChecks());//snakeLen should equal recursiveChecks
     }
 
     /*
@@ -138,7 +143,7 @@ public class SnakeGameTester {
         SnakeGame sg = new SnakeGame(a,0,0);
         sg.printBoard();
         assertArrayEquals(exp,sg.findTailRecursive());
-        //System.out.println(sg.getRecursiveChecks());
+        assertEquals(exp[2],sg.getRecursiveChecks());//snakeLen should equal recursiveChecks
     }
 
     /*
@@ -154,7 +159,7 @@ public class SnakeGameTester {
         SnakeGame sg = new SnakeGame(a,0,1);
         sg.printBoard();
         assertArrayEquals(exp,sg.findTailRecursive());
-        System.out.println(sg.getRecursiveChecks());
+        assertEquals(exp[2],sg.getRecursiveChecks());//snakeLen should equal recursiveChecks
     }
 
     /*
@@ -174,7 +179,7 @@ public class SnakeGameTester {
         SnakeGame sg = new SnakeGame(a,0,1);
         sg.printBoard();
         assertArrayEquals(exp,sg.findTailRecursive());
-        System.out.println(sg.getRecursiveChecks());
+        assertEquals(exp[2],sg.getRecursiveChecks());//snakeLen should equal recursiveChecks
     }
 
     /*
@@ -183,7 +188,7 @@ public class SnakeGameTester {
      * findTailRecursive() → exp
      */
     @Test
-    public void testFindTailRec5() {//CHANGE THIS
+    public void testFindTailRec5() {
         boolean[][] a = {{true,true,true},
                         {true,false,true},
                         {false,false,true}};
@@ -191,6 +196,6 @@ public class SnakeGameTester {
         SnakeGame sg = new SnakeGame(a,2,2);
         sg.printBoard();
         assertArrayEquals(exp,sg.findTailRecursive());
-        System.out.println(sg.getRecursiveChecks());
+        assertEquals(exp[2],sg.getRecursiveChecks());//snakeLen should equal recursiveChecks
     }
 }//end class
