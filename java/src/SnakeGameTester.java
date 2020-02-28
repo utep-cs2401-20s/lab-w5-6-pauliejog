@@ -20,6 +20,7 @@ public class SnakeGameTester {
         SnakeGame sg = new SnakeGame(a,2,2);
         sg.printBoard();
         assertArrayEquals(exp,sg.findTailExhaustive());
+        System.out.println(sg.getExhaustiveChecks());
     }
 
     /*
@@ -89,6 +90,7 @@ public class SnakeGameTester {
         SnakeGame sg = new SnakeGame(a,0,3);
         sg.printBoard();
         assertArrayEquals(exp,sg.findTailExhaustive());
+        System.out.println(sg.getExhaustiveChecks());
     }
     /*********************************************findTailRecursive****************************************************/
     /*
