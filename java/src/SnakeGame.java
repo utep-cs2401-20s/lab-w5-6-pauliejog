@@ -51,31 +51,29 @@ public class SnakeGame {
     }//end findTailRec
 
     public int[] findTailRecursive(int[] currentPosition, int[] previousPosition) {
-        int[] result = new int[3];//x,y,snakeLen
+        int[] result;//x,y,snakeLen
         int snakeLen = 0;
         int x = currentPosition[0];
         int y = currentPosition[1];
         int p1 = previousPosition[0];
         int p2 = previousPosition[1];
 
-        boolean isSnake = false;
-        if(this.game[x][y]) {
-            isSnake = true;
-            snakeLen++;
-        }
         if(neighbors(x,y) == 1 && !(x == p1 && y == p2)) {
-            //recursiveChecks++;
-            result[0] = x;
-            result[1] = y;
+            result = new int[3];
+            snakeLen++;
+            result[0] = currentPosition[0];
+            result[1] = currentPosition[1];
             result[2] = snakeLen;
-        }
-        else {
+            System.out.println(result[0] + "\n" + result[1]);
+            return result;
+
+        } else {
+            snakeLen++;
             int[] n = neighborsPosition(x,y,p1,p2);
             previousPosition[0] = x;
             previousPosition[1] = y;
-            findTailRecursive(n,previousPosition);
+            return findTailRecursive(n,previousPosition);
         }
-        return result;
     }//end findTailRec
 
     private void resetCounters() {
@@ -122,29 +120,29 @@ public class SnakeGame {
         int right = c + 1;
 
         if(up > -1) {
+            recursiveChecks++;
             if(game[up][c] && !(up == p1 && c == p2)) {
-                recursiveChecks++;
                 position[0] = up;
                 position[1] = c;
             }
         }
         if(left > -1) {
+            recursiveChecks++;
             if(game[r][left] && !(r == p1 && left == p2)) {
-                recursiveChecks++;
                 position[0] = r;
                 position[1] = left;
             }
         }
         if(right < game[0].length) {
+            recursiveChecks++;
             if(game[r][right] && !(r == p1 && right == p2)) {
-                recursiveChecks++;
                 position[0] = r;
                 position[1] = right;
             }
         }
         if(down < game.length) {
+            recursiveChecks++;
             if(game[down][c] && !(down == p1 && c == p2)) {
-                recursiveChecks++;
                 position[0] = down;
                 position[1] = c;
             }
