@@ -74,7 +74,7 @@ public class SnakeGame {
     private void resetCounters() {
         this.exhaustiveChecks = 0;
         this.recursiveChecks = 0;
-        this.snakeLen = 0;
+        this.snakeLen = 0;//modified the original instructions
     }//end resetCounters
 
 
@@ -108,7 +108,7 @@ public class SnakeGame {
         return count;
     }//end neighbors
 
-    public int[] neighborsPosition(int r, int c, int p1, int p2) {
+    public int[] neighborsPosition(int r, int c, int p1, int p2) {//this method finds the next snake piece that has not already been checked and returns its position
         int[] position = new int[2];
         int up = r - 1;
         int down = r + 1;
